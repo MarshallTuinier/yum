@@ -20,7 +20,10 @@ export default class RegisterForm extends Component {
 
     // Error handling
     try {
-      const data = await registerUser("/register", this.state);
+      const data = await registerUser(
+        "https://yum-server.marshalltuinier.com/register",
+        this.state
+      );
       if (data.error) {
         let error;
         if (data.error.message) {

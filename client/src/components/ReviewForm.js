@@ -20,14 +20,17 @@ export default class ReviewForm extends Component {
     try {
       const { _id } = this.props.store;
       const token = getToken();
-      const response = await fetch(`/reviews/${_id}`, {
-        method: "POST",
-        body: JSON.stringify(this.state),
-        headers: {
-          "Content-Type": "Application/JSON",
-          authorization: token
+      const response = await fetch(
+        `https://yum-server.marshalltuinier.com/reviews/${_id}`,
+        {
+          method: "POST",
+          body: JSON.stringify(this.state),
+          headers: {
+            "Content-Type": "Application/JSON",
+            authorization: token
+          }
         }
-      });
+      );
       const data = await response.json();
       if (data.message) {
         window.location.reload();

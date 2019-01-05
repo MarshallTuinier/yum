@@ -31,14 +31,17 @@ export default class Account extends Component {
     event.preventDefault();
     try {
       const token = getToken();
-      const response = await fetch("/updateUser", {
-        method: "POST",
-        body: JSON.stringify(this.state),
-        headers: {
-          "Content-Type": "application/JSON",
-          authorization: token
+      const response = await fetch(
+        "https://yum-server.marshalltuinier.com/updateUser",
+        {
+          method: "POST",
+          body: JSON.stringify(this.state),
+          headers: {
+            "Content-Type": "application/JSON",
+            authorization: token
+          }
         }
-      });
+      );
       const data = await response.json();
       if (data.success) {
         navigate("/");

@@ -3,7 +3,9 @@ import jwt_decode from "jwt-decode";
 
 const getTags = async tag => {
   try {
-    const response = await fetch(`/tags/${tag}`);
+    const response = await fetch(
+      `https://yum-server.marshalltuinier.com/tags/${tag}`
+    );
     const tags = await response.json();
     if (tags.error) {
       navigate("/error");
@@ -74,11 +76,14 @@ const decodeToken = () => {
 
 const getUserData = async () => {
   const token = getToken();
-  const response = await fetch("/getUserData", {
-    headers: {
-      authorization: token
+  const response = await fetch(
+    "https://yum-server.marshalltuinier.com/getUserData",
+    {
+      headers: {
+        authorization: token
+      }
     }
-  });
+  );
   const data = await response.json();
   if (data.success) return data;
   return null;

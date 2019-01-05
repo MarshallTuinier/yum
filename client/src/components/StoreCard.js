@@ -20,12 +20,17 @@ class StoreCard extends Component {
     try {
       this.handleOptimisticHeartToggle();
       const token = getToken();
-      await fetch(`/api/v1/stores/${this.props.store._id}/heart`, {
-        method: "POST",
-        headers: {
-          authorization: token
+      await fetch(
+        `https://yum-server.marshalltuinier.com/api/v1/stores/${
+          this.props.store._id
+        }/heart`,
+        {
+          method: "POST",
+          headers: {
+            authorization: token
+          }
         }
-      });
+      );
       updateUser();
     } catch (error) {
       console.error(error);

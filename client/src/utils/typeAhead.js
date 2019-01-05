@@ -4,7 +4,9 @@ const typeAhead = async search => {
 
   try {
     // Grab the data from the api endpoint
-    const response = await fetch(`/api/v1/search?q=${search}`);
+    const response = await fetch(
+      `https://yum-server.marshalltuinier.com/api/v1/search?q=${search}`
+    );
     const data = await response.json();
 
     // If the data has something in it, return it

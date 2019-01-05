@@ -26,7 +26,9 @@ export default class Map extends Component {
   };
 
   loadPlaces = async (lat = 36.16, lng = -115.14) => {
-    const response = await fetch(`/api/v1/stores/near?lat=${lat}&lng=${lng}`);
+    const response = await fetch(
+      `https://yum.marshalltuinier.com/api/v1/stores/near?lat=${lat}&lng=${lng}`
+    );
     const json = await response.json();
 
     // Create bounds for the map

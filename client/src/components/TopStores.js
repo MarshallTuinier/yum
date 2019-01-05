@@ -8,7 +8,9 @@ export default class TopStores extends Component {
   };
   componentDidMount = async () => {
     try {
-      const response = await fetch("/getTopStores");
+      const response = await fetch(
+        "https://yum-server.marshalltuinier.com/getTopStores"
+      );
       const json = await response.json();
       this.setState({
         stores: json.data

@@ -16,7 +16,9 @@ export default class StorePage extends Component {
   // Fetch the neccessary data for the store
   componentDidMount = async () => {
     try {
-      const response = await fetch(`/store/${this.props.storeSlug}`);
+      const response = await fetch(
+        `https://yum-server.marshalltuinier.com/store/${this.props.storeSlug}`
+      );
       const json = await response.json();
       // If we receive an error from the server, navaigate to the error page
       if (json.error) {
@@ -40,7 +42,9 @@ export default class StorePage extends Component {
       return;
     }
     try {
-      const response = await fetch(`/store/${this.props.storeSlug}`);
+      const response = await fetch(
+        `https://yum-server.marshalltuinier.com/store/${this.props.storeSlug}`
+      );
       const json = await response.json();
       // If we receive an error from the server, navaigate to the error page
       if (json.error) {

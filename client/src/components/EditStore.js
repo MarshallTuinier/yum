@@ -13,7 +13,9 @@ export default class EditStore extends Component {
   componentDidMount = async () => {
     const { storeId } = this.props;
     try {
-      const response = await fetch(`/stores/${storeId}`);
+      const response = await fetch(
+        `https://yum-server.marshalltuinier.com/stores/${storeId}`
+      );
       const json = await response.json();
       if (json.error) {
         navigate("error");

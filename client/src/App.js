@@ -35,16 +35,19 @@ class App extends Component {
 
   handleLogin = async user => {
     try {
-      const response = await fetch("/login", {
-        method: "POST",
-        body: JSON.stringify({
-          email: user.email,
-          password: user.password
-        }),
-        headers: {
-          "Content-Type": "application/JSON"
+      const response = await fetch(
+        "https://yum-server.marshalltuinier.com/login",
+        {
+          method: "POST",
+          body: JSON.stringify({
+            email: user.email,
+            password: user.password
+          }),
+          headers: {
+            "Content-Type": "application/JSON"
+          }
         }
-      });
+      );
       const data = await response.json();
       if (data.success) {
         localStorage.setItem("token", data.token);
@@ -73,7 +76,9 @@ class App extends Component {
   componentDidMount = async () => {
     try {
       this.updateUser();
-      const storeResponse = await fetch("/stores");
+      const storeResponse = await fetch(
+        "https://yum-server.marshalltuinier.com/stores"
+      );
       const storeJson = await storeResponse.json();
       if (storeJson.error) {
         navigate("/error/");
@@ -92,7 +97,9 @@ class App extends Component {
 
   updateStores = async () => {
     try {
-      const storeResponse = await fetch("/stores");
+      const storeResponse = await fetch(
+        "https://yum-server.marshalltuinier.com/stores"
+      );
       const storeJson = await storeResponse.json();
       if (storeJson.error) {
         navigate("/error/");

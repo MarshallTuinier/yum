@@ -77,7 +77,7 @@ export default class StoreForm extends Component {
           }
         };
         const storeResponse = await getPage(
-          `/editStore/${this.props.id}`,
+          `https://yum-server.marshalltuinier.com/editStore/${this.props.id}`,
           JSON.stringify(data),
           config
         );
@@ -107,13 +107,18 @@ export default class StoreForm extends Component {
         }
       };
       const storeResponse = await getPage(
-        `/createStore`,
+        `https://yum-server.marshalltuinier.com/createStore`,
         JSON.stringify(data),
         config
       );
       const photoData = new FormData();
       photoData.append("photo", this.state.photo);
-      await getPage(`/uploadPhoto/${storeResponse.data._id}`, photoData);
+      await getPage(
+        `https://yum-server.marshalltuinier.com/uploadPhoto/${
+          storeResponse.data._id
+        }`,
+        photoData
+      );
       updateStores();
       //After successful form completion/save, redirect to the newly created store page
       navigate(`/store/${storeResponse.data.slug}`);
